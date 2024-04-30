@@ -3,9 +3,6 @@ import {
   Sheet,
   SheetClose,
   SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { sidebarLinks } from "@/constants";
@@ -47,7 +44,7 @@ const MobileNav = () => {
                     pathname === link.route ;
 
                   return (
-                    <SheetClose asChild>
+                    <SheetClose asChild key={link.route}>
                       <Link
                         href={link.route}
                         key={link.label}
