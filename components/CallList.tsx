@@ -15,8 +15,6 @@ const CallList = ({ type }: { type: "ended" | "upcoming" | "recordings" }) => {
   const router = useRouter();
   const [recordings, setRecordings] = useState<CallRecording[]>([]);
 
-  const { toast } = useToast();
-
   const getCalls = () => {
     switch (type) {
       case "ended":
@@ -43,6 +41,7 @@ const CallList = ({ type }: { type: "ended" | "upcoming" | "recordings" }) => {
   };
 
   useEffect(() => {
+    const { toast } = useToast();
     const fetchRecordings = async () => {
       try {
         const callData = await Promise.all(
@@ -54,7 +53,7 @@ const CallList = ({ type }: { type: "ended" | "upcoming" | "recordings" }) => {
 
         setRecordings(recordings);
       } catch (error) {
-        toast({ title: 'Try again later'})
+        toast({ title: "Try again later" });
       }
     };
     if (type === "recordings") fetchRecordings();
